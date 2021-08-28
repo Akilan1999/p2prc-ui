@@ -1,0 +1,241 @@
+@import './bulma/utilities/initial-variables';
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;700;900&family=Fira+Code&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,400;0,700;1,300;1,400;1,700&display=swap');
+
+@import './bulma/bulma';
+
+
+
+$bg-dark: #11131a;
+$bg-light: #eff2f9;
+$bg-light-transparent: #eff2f96b;
+
+$term-dark: black;
+$term-light: white;
+
+
+$font-stack: -apple-system,
+BlinkMacSystemFont,
+'Segoe UI',
+Roboto,
+Helvetica,
+Arial,
+sans-serif,
+'Apple Color Emoji',
+'Segoe UI Emoji',
+'Segoe UI Symbol';
+
+
+// h1,
+// h2,
+// h3,
+// #unicorn-btn {
+//     font-family:
+//         'Cinzel',
+//         serif,
+//         $font-stack;
+// }
+
+// #unicorn-btn {
+//     color: black;
+//     font-size: large;
+//     font-style: italic;
+// }
+
+// .title,
+// span,
+// p,
+// li{
+//     color: black;
+
+// }
+
+
+// h4,
+// h5,
+// h6,
+// p,
+// div,
+// span:not(code span) {
+//     font-family:
+//         "Roboto",
+//         serif,
+//         $font-stack;
+// }
+
+// h1 {
+//     font-weight: bold;
+//     margin: 0 !important;
+// }
+
+// h2 {
+//     margin-top: 0 !important;
+//     font-style: italic;
+//     font-weight: 400 !important;
+//     color: #4a4a4a !important;
+// }
+
+
+body {
+    font-family: $font-stack;
+    min-height: 100vh;
+    // overflow: hidden;
+    background-color: $bg-light !important;
+
+    transition: 200ms background-color ease-in-out;
+    overflow: hidden;
+}
+
+body {
+    // background-color: $bg-dark !important;
+    filter: invert(100%) hue-rotate(-180deg) brightness(105%) contrast(95%) !important;
+    -webkit-filter: invert(100%) hue-rotate(-180deg) brightness(105%) contrast(95%) !important;
+}
+
+.emoji,
+.shadow,
+img,
+video {
+    filter: invert(100%) hue-rotate(-180deg) brightness(105%) contrast(95%) !important;
+    -webkit-filter: invert(100%) hue-rotate(-180deg) brightness(105%) contrast(95%) !important;
+}
+
+.shadow {
+    -webkit-box-shadow: 0px 0px 20px 0px #00000080;
+    box-shadow: 0px 0px 20px 0px #00000080;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+
+}
+
+.terminal-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+
+
+main.terminal {
+    width: 70%;
+    aspect-ratio: 4 / 3;
+    max-height: 400px;
+    background-color: $term-light;
+    border-radius: 10px;
+    font-size: 13.33px;
+    position: relative;
+
+    .titlebar {
+        width: 100%;
+        padding: 4px 0px;
+        text-align: center;
+        // color: white;
+        -webkit-box-shadow: 0px 6px 12px 0px #ffffff80;
+        box-shadow: 0px 6px 12px 0px #ffffff80;
+
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        background-color: #dbdbdb;
+        font-weight: bold;
+        font-family: "Fira Code", ui-monospace, monospace, $font-stack;
+
+    }
+
+    ul {
+        height: 100%;
+        transform: rotate(180deg);
+        direction:rtl;
+        margin: 0px 8px;
+        overflow-y: scroll;
+
+
+        li {
+            border: none;
+    
+            display: flex;
+
+            transform: rotate(-180deg);
+            direction:ltr;
+            text-align: left;
+            font-family: "Fira Code", ui-monospace, monospace, $font-stack;
+            white-space: pre-wrap;
+
+            // &:not(.cursor, .runtime) {
+            //     padding-left: 4px;
+            // }
+        }
+
+        .home-indicator {
+            color: rgb(34, 63, 0);
+            font-weight: bold;
+            margin-right: 8px;
+        }
+
+        .seperator {
+            height: 8px;
+        }
+
+        .runtime {
+
+            span {
+                font-weight: bold;
+            }
+    
+            .name {
+                color: rgb(0, 77, 77);
+            }
+    
+            .version {
+                color: rgb(92, 0, 0);
+    
+            }
+    
+        }
+
+        .cursor {
+            position: relative;
+    
+            input {
+                height: 100%;
+                border: none;
+                flex: 1 1 auto;
+                font-family: "Fira Code", ui-monospace, monospace, $font-stack;
+                
+                &:focus + i {
+                    display: none;
+                }
+    
+                &:focus {
+                    border: 0;
+                    outline: 0;
+                }
+            }
+    
+            i {
+                position: absolute;
+                width: 1px;
+                height: 80%;
+                background-color: gray;
+                left: 16px;
+                top: 10%;
+                animation-name: blink;
+                animation-duration: 800ms;
+                animation-iteration-count: infinite;
+                opacity: 1;
+            }
+           
+        }
+    }
+}
+
+
+@keyframes blink {
+	from { opacity: 1; }
+	to { opacity: 0; }
+}

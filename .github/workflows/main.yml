@@ -1,0 +1,47 @@
+name: Build and Deploy
+
+on: push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Get README
+        run: |
+          curl --create-dirs -o src/markdown/README.md https://raw.githubusercontent.com/Akilan1999/p2p-rendering-computation/master/README.md
+          awk '/<!-- seperator -->/{p=1}p' src/markdown/README.md > tmp && mv tmp src/markdown/README.md
+
+      - name: Get Tags
+        run: |
+          curl -H "Accept: application/vnd.github.v3+json" https://api.github.com/repos/Akilan1999/p2p-rendering-computation/tags > tmp.json
+
+      - name: Get Version
+        id: version
+        uses: sergeysova/jq-action@v2
+        with:
+          cmd: jq ".[0].name" tmp.json
+
+      - name: Debug
+        run: |
+          echo "version ${{ steps.version.outputs.value }}"
+
+      - name: Save Version
+        uses: sergeysova/jq-action@v2
+        with:
+          cmd: jq ".version = \"${{ steps.version.outputs.value }}\"" package.json > tmp && mv tmp package.json
+        env:
+          ACTIONS_ALLOW_UNSECURE_COMMANDS: true
+
+      - name: Build
+        run: |
+          cat package.json
+          yarn install
+          yarn build
+
+      - name: Publish
+        uses: JamesIves/github-pages-deploy-action@4.1.1
+        with:
+          branch: gh-pages
+          folder: public

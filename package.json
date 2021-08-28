@@ -1,0 +1,31 @@
+{
+  "name": "p2prc-ui",
+  "version": "x.x.x",
+  "description": "p2prc project ui interacting with p2prc packages",
+  "main": "index.js",
+  "scripts": {
+    "start": "gatsby develop",
+    "build": "gatsby build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FarazzShaikh/p2prc-ui.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FarazzShaikh/p2prc-ui/issues"
+  },
+  "homepage": "https://github.com/FarazzShaikh/p2prc-ui#readme",
+  "dependencies": {
+    "gatsby": "^3.12.0",
+    "gatsby-plugin-sass": "^4.12.0",
+    "gatsby-source-filesystem": "^3.12.0",
+    "gatsby-transformer-remark": "^4.9.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-helmet": "^6.1.0",
+    "sass": "^1.38.0"
+  }
+}
